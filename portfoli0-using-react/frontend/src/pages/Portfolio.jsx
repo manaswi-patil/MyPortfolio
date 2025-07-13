@@ -437,7 +437,7 @@ const Portfolio = () => {
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="text-sm text-gray-400">Technologies:</span>
                     <span className="px-3 py-1 bg-[#64ffda]/10 text-[#64ffda] rounded-full text-sm">
-                      Next.js
+                      React.js
                     </span>
                     <span className="px-3 py-1 bg-[#64ffda]/10 text-[#64ffda] rounded-full text-sm">
                       MongoDB
