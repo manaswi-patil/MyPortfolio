@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { PenTool, Code2, Settings, ChevronDown, Sparkles } from "lucide-react";
 
 export default function AboutMeSection() {
