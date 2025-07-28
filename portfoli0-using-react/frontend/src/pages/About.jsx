@@ -41,7 +41,7 @@ export default function AboutMeSection() {
               <h3 className="text-lg sm:text-xl font-bold text-gray-200 mb-2">
                 Manaswi Patil
               </h3>
-              <p className="text-[#64ffda] font-medium">Frontend Developer</p>
+              <p className="text-[#64ffda] font-medium">Web Developer</p>
             </div>
 
             <div className="relative">

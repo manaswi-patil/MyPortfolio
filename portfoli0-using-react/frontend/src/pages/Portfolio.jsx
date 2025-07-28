@@ -469,10 +469,13 @@ const Portfolio = () => {
                     </div>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    Developed part of a hotel reservation system with user
-                    authentication and room availability checking. Features
-                    include booking management and will include payment
-                    integration in future updates.
+                    Developed part of a hotel service management system with
+                    CRUD (Create,Read,UpdateDelete)operation. AddServive
+                    functionality,Delete,Edit servive. Onclicking each service
+                    card the corresponding service get open whers we can
+                    edit,delete,add, items under that service.Features include
+                    booking management and will include payment integration in
+                    future updates.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     <span className="text-sm text-gray-400">Technologies:</span>
