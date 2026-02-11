@@ -70,137 +70,141 @@ const Navbar = () => {
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0a192f]/95 backdrop-blur-sm shadow-lg"
-          : "bg-[#0a192f]"
+          ? "bg-slate-950/90 backdrop-blur-xl shadow-lg border-b border-slate-800"
+          : "bg-gradient-to-r from-slate-950/80 via-slate-900/80 to-sky-500/30 backdrop-blur-lg"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 py-4">
-        <div className="flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+        <div className="flex justify-between items-center gap-4">
           <Link
             to="/"
-            className="text-2xl font-bold text-[#64ffda] hover:text-[#64ffda]/80 transition-all duration-300"
+            className="flex items-center gap-2 text-xl sm:text-2xl font-semibold tracking-tight text-sky-400 hover:text-sky-300 transition-all duration-300"
           >
-            MP
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/10 border border-sky-500/40 text-sm font-bold">
+              MP
+            </span>
+            <span className="hidden sm:inline text-sm font-medium uppercase tracking-[0.2em] text-slate-200/80">
+              Portfolio
+            </span>
           </Link>
 
           {/* Mobile menu button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-[#64ffda] hover:text-[#64ffda]/80 focus:outline-none transition-all duration-300"
+            className="md:hidden inline-flex items-center justify-center rounded-full p-2.5 text-slate-100 hover:text-sky-300 hover:bg-slate-900/60 border border-slate-700/70 focus:outline-none transition-all duration-300"
           >
             {isMenuOpen ? (
-              <FaTimes className="h-6 w-6" />
+              <FaTimes className="h-5 w-5" />
             ) : (
-              <FaBars className="h-6 w-6" />
+              <FaBars className="h-5 w-5" />
             )}
           </button>
 
           {/* Desktop menu */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <li>
               <button
                 onClick={() => handleNavigation("/", "home-section")}
-                className={`group flex items-center space-x-2 relative text-sm font-medium transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   isActive("/") && !location.hash
-                    ? "text-[#64ffda]"
-                    : "text-gray-300 hover:text-[#64ffda]"
+                    ? "text-sky-300 bg-slate-900/80 shadow-md shadow-sky-500/20"
+                    : "text-slate-200 hover:text-sky-300 hover:bg-slate-900/70"
                 }`}
               >
-                <FaHome
-                  className={`text-lg group-hover:scale-110 transition-transform duration-300 ${
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border text-base transition-all duration-300 ${
                     isActive("/") && !location.hash
-                      ? "text-[#64ffda]"
-                      : "text-gray-300 group-hover:text-[#64ffda]"
+                      ? "bg-sky-500/20 border-sky-400 text-sky-300"
+                      : "bg-slate-950/60 border-slate-700 text-slate-300 group-hover:bg-sky-500/10 group-hover:border-sky-400 group-hover:text-sky-300"
                   }`}
-                />
+                >
+                  <FaHome />
+                </div>
                 <span>Home</span>
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 transition-transform duration-300 ${
-                    isActive("/") && !location.hash
-                      ? "scale-x-100"
-                      : "group-hover:scale-x-100"
-                  }`}
-                ></span>
               </button>
             </li>
             <li>
               <button
                 onClick={() => handleNavigation("/", "about-section")}
-                className={`group flex items-center space-x-2 relative text-sm font-medium transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   location.hash === "#about-section"
-                    ? "text-[#64ffda]"
-                    : "text-gray-300 hover:text-[#64ffda]"
+                    ? "text-violet-200 bg-slate-900/80 shadow-md shadow-violet-500/20"
+                    : "text-slate-200 hover:text-violet-200 hover:bg-slate-900/70"
                 }`}
               >
-                <FaUser className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                <span>About</span>
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 transition-transform duration-300 ${
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border text-base transition-all duration-300 ${
                     location.hash === "#about-section"
-                      ? "scale-x-100"
-                      : "group-hover:scale-x-100"
+                      ? "bg-violet-500/20 border-violet-400 text-violet-200"
+                      : "bg-slate-950/60 border-slate-700 text-slate-300 group-hover:bg-violet-500/10 group-hover:border-violet-400 group-hover:text-violet-200"
                   }`}
-                ></span>
+                >
+                  <FaUser />
+                </div>
+                <span>About</span>
               </button>
             </li>
             <li>
               <button
                 onClick={() => handleNavigation("/", "skills-section")}
-                className={`group flex items-center space-x-2 relative text-sm font-medium transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   location.hash === "#skills-section"
-                    ? "text-[#64ffda]"
-                    : "text-gray-300 hover:text-[#64ffda]"
+                    ? "text-emerald-200 bg-slate-900/80 shadow-md shadow-emerald-500/20"
+                    : "text-slate-200 hover:text-emerald-200 hover:bg-slate-900/70"
                 }`}
               >
-                <FaCode className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                <span>Skills</span>
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 transition-transform duration-300 ${
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border text-base transition-all duration-300 ${
                     location.hash === "#skills-section"
-                      ? "scale-x-100"
-                      : "group-hover:scale-x-100"
+                      ? "bg-emerald-500/20 border-emerald-400 text-emerald-200"
+                      : "bg-slate-950/60 border-slate-700 text-slate-300 group-hover:bg-emerald-500/10 group-hover:border-emerald-400 group-hover:text-emerald-200"
                   }`}
-                ></span>
+                >
+                  <FaCode />
+                </div>
+                <span>Skills</span>
               </button>
             </li>
             <li>
               <button
                 onClick={() => handleNavigation("/", "projects-section")}
-                className={`group flex items-center space-x-2 relative text-sm font-medium transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   location.hash === "#projects-section"
-                    ? "text-[#64ffda]"
-                    : "text-gray-300 hover:text-[#64ffda]"
+                    ? "text-amber-200 bg-slate-900/80 shadow-md shadow-amber-500/20"
+                    : "text-slate-200 hover:text-amber-200 hover:bg-slate-900/70"
                 }`}
               >
-                <FaBriefcase className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                <span>Portfolio</span>
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 transition-transform duration-300 ${
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border text-base transition-all duration-300 ${
                     location.hash === "#projects-section"
-                      ? "scale-x-100"
-                      : "group-hover:scale-x-100"
+                      ? "bg-amber-500/20 border-amber-400 text-amber-200"
+                      : "bg-slate-950/60 border-slate-700 text-slate-300 group-hover:bg-amber-500/10 group-hover:border-amber-400 group-hover:text-amber-200"
                   }`}
-                ></span>
+                >
+                  <FaBriefcase />
+                </div>
+                <span>Portfolio</span>
               </button>
             </li>
             <li>
               <button
                 onClick={() => handleNavigation("/", "contact-section")}
-                className={`group flex items-center space-x-2 relative text-sm font-medium transition-all duration-300 ${
+                className={`group flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   location.hash === "#contact-section"
-                    ? "text-[#64ffda]"
-                    : "text-gray-300 hover:text-[#64ffda]"
+                    ? "text-rose-200 bg-slate-900/80 shadow-md shadow-rose-500/20"
+                    : "text-slate-200 hover:text-rose-200 hover:bg-slate-900/70"
                 }`}
               >
-                <FaEnvelope className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                <span>Contact</span>
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#64ffda] transform scale-x-0 transition-transform duration-300 ${
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full border text-base transition-all duration-300 ${
                     location.hash === "#contact-section"
-                      ? "scale-x-100"
-                      : "group-hover:scale-x-100"
+                      ? "bg-rose-500/20 border-rose-400 text-rose-200"
+                      : "bg-slate-950/60 border-slate-700 text-slate-300 group-hover:bg-rose-500/10 group-hover:border-rose-400 group-hover:text-rose-200"
                   }`}
-                ></span>
+                >
+                  <FaEnvelope />
+                </div>
+                <span>Contact</span>
               </button>
             </li>
           </ul>
@@ -212,13 +216,13 @@ const Navbar = () => {
             isMenuOpen ? "block" : "hidden"
           } transition-all duration-300 ease-in-out`}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-[#112240] rounded-lg mt-4 shadow-lg">
+          <div className="px-3 pt-3 pb-4 space-y-1 bg-slate-950/95 border border-slate-800 rounded-2xl mt-3 shadow-2xl shadow-slate-950/70 backdrop-blur-xl">
             <button
               onClick={() => handleNavigation("/", "home-section")}
               className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 isActive("/") && !location.hash
-                  ? "text-[#64ffda] bg-[#64ffda]/10"
-                  : "text-gray-300 hover:text-[#64ffda] hover:bg-[#64ffda]/10"
+                  ? "text-sky-300 bg-slate-900/80"
+                  : "text-slate-200 hover:text-sky-300 hover:bg-slate-900/70"
               }`}
             >
               <FaHome className="text-lg" />
@@ -228,8 +232,8 @@ const Navbar = () => {
               onClick={() => handleNavigation("/", "about-section")}
               className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 location.hash === "#about-section"
-                  ? "text-[#64ffda] bg-[#64ffda]/10"
-                  : "text-gray-300 hover:text-[#64ffda] hover:bg-[#64ffda]/10"
+                  ? "text-violet-200 bg-slate-900/80"
+                  : "text-slate-200 hover:text-violet-200 hover:bg-slate-900/70"
               }`}
             >
               <FaUser className="text-lg" />
@@ -239,8 +243,8 @@ const Navbar = () => {
               onClick={() => handleNavigation("/", "skills-section")}
               className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 location.hash === "#skills-section"
-                  ? "text-[#64ffda] bg-[#64ffda]/10"
-                  : "text-gray-300 hover:text-[#64ffda] hover:bg-[#64ffda]/10"
+                  ? "text-emerald-200 bg-slate-900/80"
+                  : "text-slate-200 hover:text-emerald-200 hover:bg-slate-900/70"
               }`}
             >
               <FaCode className="text-lg" />
@@ -250,8 +254,8 @@ const Navbar = () => {
               onClick={() => handleNavigation("/", "projects-section")}
               className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 location.hash === "#projects-section"
-                  ? "text-[#64ffda] bg-[#64ffda]/10"
-                  : "text-gray-300 hover:text-[#64ffda] hover:bg-[#64ffda]/10"
+                  ? "text-amber-200 bg-slate-900/80"
+                  : "text-slate-200 hover:text-amber-200 hover:bg-slate-900/70"
               }`}
             >
               <FaBriefcase className="text-lg" />
@@ -261,8 +265,8 @@ const Navbar = () => {
               onClick={() => handleNavigation("/", "contact-section")}
               className={`w-full flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 location.hash === "#contact-section"
-                  ? "text-[#64ffda] bg-[#64ffda]/10"
-                  : "text-gray-300 hover:text-[#64ffda] hover:bg-[#64ffda]/10"
+                  ? "text-rose-200 bg-slate-900/80"
+                  : "text-slate-200 hover:text-rose-200 hover:bg-slate-900/70"
               }`}
             >
               <FaEnvelope className="text-lg" />

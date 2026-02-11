@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import About from "./About";
 import Skills from "./Skills";
 import Portfolio from "./Portfolio";
@@ -6,8 +6,6 @@ import Footer from "./Footer";
 import Contact from "./Contact";
 import resumePDF from "./../assets/Resume.pdf";
 import profileImg from "./../assets/profileimg.png";
-import bgImg1 from "./../assets/bgimg.jpg";
-import bgImg2 from "./../assets/bgimg2.jpg";
 import {
   Download,
   Github,
@@ -21,18 +19,6 @@ import {
 
 const Home = () => {
   const aboutRef = useRef(null);
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
-  const backgroundImages = [bgImg1, bgImg2];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex(
-        (prevIndex) => (prevIndex + 1) % backgroundImages.length
-      );
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollToAbout = () => {
     aboutRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -46,258 +32,118 @@ const Home = () => {
     <>
       <div
         id="home-section"
-        className="min-h-screen w-full relative overflow-hidden"
+        className="min-h-screen w-full relative overflow-hidden bg-slate-950"
       >
-        {/* Background Image Carousel with Pop Effect */}
+        {/* Subtle gradient background */}
         <div className="absolute inset-0">
-          {backgroundImages.map((img, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-all duration-1000 transform ${
-                currentBgIndex === index
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-105"
-              }`}
-              style={{
-                backgroundImage: `url(${img})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                transformOrigin: "center",
-                willChange: "transform, opacity",
-              }}
-            />
-          ))}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-sky-900/60" />
+          <div className="absolute inset-x-0 top-[-200px] h-[400px] bg-gradient-to-b from-sky-500/20 via-sky-400/10 to-transparent blur-3xl" />
+          <div className="absolute inset-x-10 bottom-[-160px] h-[320px] bg-gradient-to-t from-slate-800/80 via-slate-900/60 to-transparent blur-3xl" />
         </div>
 
-        {/* Overlay for better content visibility */}
-        <div className="absolute inset-0 bg-[#0a192f]/80 transition-opacity duration-1000"></div>
-
-        {/* Modern geometric background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDIuMjA5LTEuNzkxIDQtNCA0cy00LTEuNzkxLTQtNCAxLjc5MS00IDQtNCA0IDEuNzkxIDQgNHoiIGZpbGw9IiMxZDI5NTAiLz48L2c+PC9zdmc+')] opacity-10"></div>
-          </div>
-
-          {/* Floating Technology Icons - Responsive positioning */}
-          {[
-            {
-              icon: "⚛️",
-              name: "React",
-              color: "#64ffda",
-              size: "text-2xl sm:text-3xl",
-              position: { left: "5%", top: "15%" },
-              smPosition: { left: "10%", top: "20%" },
-            },
-            {
-              icon: "▲",
-              name: "Next.js",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "85%", top: "25%" },
-              smPosition: { left: "85%", top: "30%" },
-            },
-            {
-              icon: "JS",
-              name: "JavaScript",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "15%", top: "75%" },
-              smPosition: { left: "20%", top: "80%" },
-            },
-            {
-              icon: "🌐",
-              name: "HTML",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "75%", top: "65%" },
-              smPosition: { left: "80%", top: "70%" },
-            },
-            {
-              icon: "🎨",
-              name: "CSS",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "25%", top: "35%" },
-              smPosition: { left: "30%", top: "40%" },
-            },
-            {
-              icon: "⚛️",
-              name: "React",
-              color: "#64ffda",
-              size: "text-2xl sm:text-3xl",
-              position: { left: "65%", top: "85%" },
-              smPosition: { left: "70%", top: "85%" },
-            },
-            {
-              icon: "▲",
-              name: "Next.js",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "45%", top: "10%" },
-              smPosition: { left: "40%", top: "15%" },
-            },
-            {
-              icon: "JS",
-              name: "JavaScript",
-              color: "#64ffda",
-              size: "text-xl sm:text-2xl",
-              position: { left: "90%", top: "45%" },
-              smPosition: { left: "90%", top: "50%" },
-            },
-          ].map((tech, index) => (
-            <div
-              key={`${tech.name}-${index}`}
-              className="absolute opacity-20 hover:opacity-40 transition-opacity duration-300 hidden sm:block"
-              style={{
-                left: tech.smPosition.left,
-                top: tech.smPosition.top,
-                animation: `float ${
-                  20 + Math.random() * 10
-                }s infinite ease-in-out`,
-                animationDelay: `${Math.random() * 5}s`,
-                transform: `rotate(${Math.random() * 360}deg)`,
-                textShadow: "0 2px 4px rgba(100,255,218,0.1)",
-                zIndex: 1,
-              }}
-            >
-              <div className="flex flex-col items-center gap-1">
-                <div
-                  className={`${tech.size} font-bold`}
-                  style={{ color: tech.color }}
-                >
-                  {tech.icon}
-                </div>
-                <div
-                  className="text-xs sm:text-sm font-medium"
-                  style={{ color: tech.color }}
-                >
-                  {tech.name}
-                </div>
-              </div>
-            </div>
-          ))}
-
-          {/* Simplified gradient orbs - Responsive sizing */}
+        {/* Diagonal split between image and text (desktop only) */}
+        <div className="pointer-events-none absolute inset-0 hidden lg:block">
+          {/* Darker side behind image */}
           <div
-            className="absolute top-1/4 -left-10 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-5 animate-blob"
-            style={{ zIndex: 0 }}
-          ></div>
+            className="absolute inset-y-0 left-0 w-3/5 bg-slate-950/80"
+            style={{
+              clipPath: "polygon(0 0, 75% 0, 55% 100%, 0% 100%)",
+            }}
+          />
+          {/* Lighter side behind text */}
           <div
-            className="absolute top-1/3 -right-10 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-5 animate-blob animation-delay-2000"
-            style={{ zIndex: 0 }}
-          ></div>
+            className="absolute inset-y-0 right-0 w-3/5 bg-slate-900/40"
+            style={{
+              clipPath: "polygon(25% 0, 100% 0, 100% 100%, 45% 100%)",
+            }}
+          />
+          {/* Diagonal partition line */}
+          <div
+            className="absolute left-1/2 top-[-10%] h-[120%] w-px bg-gradient-to-b from-sky-400/80 via-sky-300/40 to-transparent"
+            style={{
+              transform: "translateX(-50%) rotate(-10deg)",
+              transformOrigin: "center",
+            }}
+          />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen flex items-center py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left side - Profile Picture with unique modern design */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen flex items-center py-12 sm:py-16 lg:py-20 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left side - Profile Picture, darker side */}
             <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-              <div className="relative group perspective-1000">
-                {/* Floating elements */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-[#64ffda] via-purple-500 to-[#64ffda] rounded-full blur-xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-gradient"></div>
-
-                {/* Main profile container with 3D effect */}
-                <div className="relative transform transition-transform duration-700 group-hover:rotate-y-10">
-                  <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl bg-[#0a192f]/30 backdrop-blur-md">
-                    {/* Profile image with parallax effect */}
-                    <div className="w-full h-full overflow-hidden relative">
-                      <img
-                        src={profileImg}
-                        alt="Manaswi M. Patil"
-                        className="w-full h-full object-cover object-center transform transition-all duration-700 group-hover:scale-110"
-                      />
-                      {/* Animated gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-sky-500/30 via-cyan-400/10 to-transparent blur-2xl opacity-70 group-hover:opacity-90 transition duration-500" />
+                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border border-slate-800 bg-slate-950/85 shadow-[0_18px_60px_rgba(15,23,42,0.9)]">
+                  <img
+                    src={profileImg}
+                    alt="Manaswi M. Patil"
+                    className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-slate-300/80">
+                        Frontend Developer
+                      </p>
+                      <p className="text-sm font-medium text-sky-100">
+                        React & JavaScript
+                      </p>
                     </div>
-
-                    {/* Floating tech stack badges */}
-                    <div className="absolute top-3 right-3 flex flex-col gap-2">
-                      {[
-                        { icon: "⚛️", name: "React", color: "#61DAFB" },
-                        { icon: "▲", name: "Next.js", color: "#000000" },
-                        { icon: "JS", name: "JavaScript", color: "#F7DF1E" },
-                      ].map((tech, index) => (
-                        <div
-                          key={tech.name}
-                          className="px-3 py-1.5 bg-white/10 backdrop-blur-md text-white text-xs rounded-full transform transition-all duration-300 hover:scale-110 hover:bg-white/20 group/tech"
-                          style={{
-                            animationDelay: `${index * 200}ms`,
-                            animation: `float ${
-                              3 + index
-                            }s infinite ease-in-out`,
-                          }}
-                        >
-                          <span className="flex items-center gap-2">
-                            <span className="text-sm">{tech.icon}</span>
-                            <span className="hidden sm:inline font-medium">
-                              {tech.name}
-                            </span>
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Animated bottom info */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a192f]/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white text-sm font-medium">
-                          Frontend Developer
-                        </span>
-                        <div className="flex gap-2">
-                          <div className="w-2 h-2 rounded-full bg-[#64ffda] animate-pulse"></div>
-                          <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse animation-delay-300"></div>
-                          <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse animation-delay-600"></div>
-                        </div>
-                      </div>
+                    <div className="flex gap-1.5">
+                      <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+                      <span className="inline-flex h-2.5 w-2.5 rounded-full bg-sky-400/80" />
                     </div>
                   </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-[#64ffda] rounded-tl-lg opacity-50"></div>
-                  <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-[#64ffda] rounded-br-lg opacity-50"></div>
-
-                  {/* Animated corner accents */}
-                  <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#64ffda] rounded-tl-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-2 -translate-y-2"></div>
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#64ffda] rounded-br-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 translate-y-2"></div>
                 </div>
               </div>
             </div>
 
-            {/* Right side - Content with modern design */}
+            {/* Right side - Clean content for clients, lighter side */}
             <div className="order-1 lg:order-2 text-center lg:text-left">
-              <div className="space-y-6 backdrop-blur-md bg-[#0a192f]/30 p-8 rounded-3xl border border-[#64ffda]/10 shadow-xl">
+              <div className="space-y-7 bg-slate-900/60 backdrop-blur-xl p-7 sm:p-8 rounded-3xl border border-slate-600/70 shadow-[0_18px_60px_rgba(15,23,42,0.85)]">
                 <div className="inline-block">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-[#64ffda]/10 text-[#64ffda] border border-[#64ffda]/20 hover:bg-[#64ffda]/20 transition-all duration-300">
-                    <Star className="w-4 h-4 mr-2" />
-                    Available for Work
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/15 transition-all duration-300">
+                    <Star className="w-4 h-4 mr-2 text-emerald-300" />
+                    Open to opportunities & collaborations
                   </span>
                 </div>
 
                 <div className="space-y-4">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold sm:font-bold text-slate-50 tracking-tight leading-tight">
                     Hi, I'm{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#64ffda] to-purple-500">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-300">
                       Manaswi M. Patil
                     </span>
                   </h1>
 
-                  <h2 className="text-xl sm:text-2xl text-gray-300 flex items-center justify-center lg:justify-start gap-2">
-                    <Code2 className="w-5 h-5 text-[#64ffda]" />
-                    Web Developer
+                  <h2 className="text-lg sm:text-xl md:text-2xl text-slate-200 flex items-center justify-center lg:justify-start gap-2">
+                    <Code2 className="w-5 h-5 text-sky-400" />
+                    Building clean, modern web experiences for your business
                   </h2>
 
-                  <p className="text-base sm:text-lg text-gray-400 max-w-lg mx-auto lg:mx-0">
-                    Passionate about creating beautiful and functional web
-                    experiences. Specializing in React, JavaScript, and modern
-                    web technologies.
+                  <p className="text-sm sm:text-base text-slate-300/90 max-w-lg mx-auto lg:mx-0">
+                    I help businesses turn ideas into simple, responsive web
+                    experiences that look professional and are easy for
+                    customers to use.
                   </p>
+
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+                    <span className="px-3 py-1 text-xs sm:text-sm rounded-full bg-slate-900/70 border border-slate-600 text-slate-200">
+                      Fast, responsive layouts
+                    </span>
+                    <span className="px-3 py-1 text-xs sm:text-sm rounded-full bg-slate-900/70 border border-slate-600 text-slate-200">
+                      Clear, simple UX
+                    </span>
+                    <span className="px-3 py-1 text-xs sm:text-sm rounded-full bg-slate-900/70 border border-slate-600 text-slate-200">
+                      Built with React & JS
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button
                     onClick={openResumePDF}
-                    className="group relative inline-flex items-center justify-center px-6 py-3 font-medium tracking-wide text-[#0a192f] bg-[#64ffda] rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#64ffda]/90 hover:shadow-lg hover:shadow-[#64ffda]/20 hover:scale-105"
+                    className="group relative inline-flex items-center justify-center px-6 py-3 font-medium tracking-wide text-slate-950 bg-sky-400 rounded-xl overflow-hidden transition-all duration-300 hover:bg-sky-300 hover:shadow-lg hover:shadow-sky-500/30 hover:scale-105"
                   >
                     <span className="relative flex items-center text-sm">
                       <Download className="w-4 h-4 mr-2" />
@@ -306,7 +152,7 @@ const Home = () => {
                   </button>
                   <button
                     onClick={scrollToAbout}
-                    className="group relative inline-flex items-center justify-center px-6 py-3 font-medium tracking-wide text-[#64ffda] border border-[#64ffda] rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#64ffda]/10 hover:scale-105"
+                    className="group relative inline-flex items-center justify-center px-6 py-3 font-medium tracking-wide text-slate-100 border border-slate-500/70 rounded-xl overflow-hidden transition-all duration-300 hover:bg-slate-900/60 hover:border-sky-400 hover:text-sky-200 hover:scale-105"
                   >
                     <span className="relative flex items-center text-sm">
                       Learn More
@@ -316,7 +162,7 @@ const Home = () => {
                 </div>
 
                 {/* Social Links with modern design */}
-                <div className="flex gap-4 justify-center lg:justify-start pt-4">
+                <div className="flex gap-3 sm:gap-4 justify-center lg:justify-start pt-3 sm:pt-4">
                   {[
                     {
                       icon: Github,
@@ -339,7 +185,7 @@ const Home = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative p-3 rounded-xl border border-[#64ffda]/20 text-[#64ffda] hover:bg-[#64ffda]/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#64ffda]/10"
+                      className="group relative p-2.5 sm:p-3 rounded-full border border-slate-600/70 text-slate-200 hover:border-sky-400 hover:text-sky-300 hover:bg-slate-900/70 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-sky-500/20"
                       aria-label={social.label}
                     >
                       <social.icon className="w-5 h-5" />
