@@ -73,7 +73,6 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-[#112240] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Contact Header */}
         <div className="text-center mb-6 md:mb-8 relative">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#64ffda] mb-2 tracking-tight">
             Get In Touch
@@ -83,7 +82,6 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Contact Form */}
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
