@@ -30,7 +30,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "/api/contact";
+      const API_URL = import.meta.env.VITE_API_URL;
       const res = await axios.post(API_URL, formData);
 
       toast.success("Message sent successfully!", {
@@ -62,7 +62,7 @@ const Contact = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-        }
+        },
       );
     } finally {
       setIsSubmitting(false);
@@ -203,4 +203,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
