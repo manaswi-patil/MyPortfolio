@@ -7,10 +7,25 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: "https://my-portfolio-git-main-manaswis-project.vercel.app",
-  optionsSuccessStatus: 200
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://my-portfolio-git-main-manaswis-project.vercel.app",
+];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Allow non-browser clients (curl/postman) with no Origin header
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 200,
+  })
+);
 
 app.use(express.json());
 
