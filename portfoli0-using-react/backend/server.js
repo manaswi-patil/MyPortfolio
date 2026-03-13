@@ -11,6 +11,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
   "https://my-portfolio-git-main-manaswis-project.vercel.app",
+  "https://my-portfolio-beige-pi-51.vercel.app",
 ];
 
 app.use(
@@ -24,7 +25,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     optionsSuccessStatus: 200,
-  })
+  }),
 );
 
 app.use(express.json());
